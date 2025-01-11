@@ -10,10 +10,10 @@ export default async function handler(req, res) {
         "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`,
       },
       body: JSON.stringify({
-        model: "text-davinci-003",
-        prompt: "Hola mundo",
-        max_tokens: 5,
-      }),
+  model: "gpt-3.5-turbo",
+  messages: [{ role: "user", content: "Hola mundo" }],
+  max_tokens: 50
+}),
     });
 
     if (!response.ok) {
