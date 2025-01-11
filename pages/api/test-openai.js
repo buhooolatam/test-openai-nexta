@@ -1,10 +1,11 @@
 // pages/api/test-openai.js
 
-const { Configuration, OpenAIApi } = require('openai');
-
-module.exports = async function handler(req, res) {
+export default async function handler(req, res) {
   try {
-    console.log('Probando OpenAI con module.exports...');
+    console.log('Probando SOLO OpenAI (con instancia)...');
+
+    // Si quieres usar require en vez de import:
+    const { Configuration, OpenAIApi } = require('openai');
 
     const config = new Configuration({
       apiKey: process.env.OPENAI_API_KEY,
@@ -25,4 +26,4 @@ module.exports = async function handler(req, res) {
     console.error('Error en test-openai:', err);
     return res.status(500).json({ error: err.message });
   }
-};
+}
